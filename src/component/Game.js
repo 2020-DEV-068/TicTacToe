@@ -25,6 +25,10 @@ const Game = () => {
         const gameBoard = board.slice();
         gameBoard[tile] = currentPlayer;
         setBoard(gameBoard);
+        togglePlayer();
+    };
+
+    const togglePlayer = () => {
         setCurrentPlayer(currentPlayer === Constants.PLAYER_X ? Constants.PLAYER_O : Constants.PLAYER_X);
     };
 
