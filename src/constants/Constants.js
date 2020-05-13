@@ -4,6 +4,7 @@ const Constants = {
     INITIAL_TILE_POSITION: 0,
     PLAYER_X: "X",
     EMPTY_VALUE: "",
-    PLAYER_O: "O"
+    PLAYER_O: "O",
+    CURRENT_PLAYER: "Current Player : "
 };
 export default Constants;

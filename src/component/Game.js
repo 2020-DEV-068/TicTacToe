@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import Tile from './Tile';
+import Status from './Status';
 import StyleConstants from '../constants/StyleConstants';
 import Constants from '../constants/Constants';
 
@@ -38,6 +39,9 @@ const Game = () => {
                 {Constants.APP_TITLE}
             </header>
             <div>
+                <div className={StyleConstants.STATUS}>
+                    <Status currentPlayer={currentPlayer} />
+                </div>
                 <ul className={StyleConstants.BOARD}>
                     {renderBoard()}
                 </ul>

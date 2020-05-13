@@ -47,3 +47,10 @@ button.tile-button[data-symbol-color="X"] {
 button.tile-button[data-symbol-color="O"] {
   color: green;
 }
+
+.status {
+  font: 25px "Century Gothic", Futura, sans-serif;
+  margin: auto;
+  color: #424242;
+  margin-bottom: 20px;
+}
