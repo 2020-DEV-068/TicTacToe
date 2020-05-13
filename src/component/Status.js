@@ -11,7 +11,7 @@ const Status = (props) => {
 
     const updateStatus = () => {
         if (isRowCompletedByAPlayer() || isColumnCompletedByAPlayer()
-            || isLeftDiagonalCompletedByAPlayer()) {
+            || isLeftDiagonalCompletedByAPlayer() || isRightDiagonalCompletedByAPlayer()) {
             setGameStatus(Constants.STATUS_WINNER + winner);
             onPlayerWin();
             return;
@@ -57,6 +57,10 @@ const Status = (props) => {
 
     const isLeftDiagonalCompletedByAPlayer = () => {
         return isTilesTakenBySamePlayer(Constants.LEFT_DIAGONAL_TILES);
+    };
+
+    const isRightDiagonalCompletedByAPlayer = () => {
+        return isTilesTakenBySamePlayer(Constants.RIGHT_DIAGONAL_TILES);
     };
 
     const isTilesTakenBySamePlayer = (tiles) => {
