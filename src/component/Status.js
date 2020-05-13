@@ -19,22 +19,22 @@ const Status = (props) => {
     };
 
     const isFirstRowCompletedByAPlayer = () => {
-        if (isTilesTakenBySamePlayer(Constants.FIRST_ROW_TILES)) {
-            setWinner(board[Constants.FIRST_ROW_TILES[Constants.INITIAL_TILE_POSITION]]);
-            return true;
-        }
-        return false;
+        return isTilesTakenBySamePlayer(Constants.FIRST_ROW_TILES);
     };
 
     const isSecondRowCompletedByAPlayer = () => {
-        if (isTilesTakenBySamePlayer(Constants.SECOND_ROW_TILES)) {
-            setWinner(board[Constants.SECOND_ROW_TILES[Constants.INITIAL_TILE_POSITION]]);
+        return isTilesTakenBySamePlayer(Constants.SECOND_ROW_TILES);
+    };
+
+    const isTilesTakenBySamePlayer = (tiles) => {
+        if (hasWinner(tiles)) {
+            setWinner(board[tiles[Constants.INITIAL_TILE_POSITION]]);
             return true;
         }
         return false;
     };
 
-    const isTilesTakenBySamePlayer = (tiles) => {
+    const hasWinner = (tiles) => {
         return tiles.map((tile) => board[tile])
             .every((value, index, arr) => value && value === arr[Constants.INITIAL_TILE_POSITION]);
     };
