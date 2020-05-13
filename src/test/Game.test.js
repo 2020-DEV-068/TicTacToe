@@ -39,4 +39,9 @@ describe(("<Game/> component functionality"), () => {
             expect(tile.find("button").text()).toBe(Constants.EXPECT_EMPTY_VALUE);
         });
     });
+
+    it("Should always assign first move to Player X", () => {
+        wrapper.find(Tile).at(0).find("button").simulate('click');
+        expect(wrapper.find(Tile).at(0).find("button").text()).toBe(Constants.EXPECT_PLAYER_X);
+    });
 });
