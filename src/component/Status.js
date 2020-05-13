@@ -4,7 +4,15 @@ import Constants from '../constants/Constants';
 
 const Status = (props) => {
     const updateStatus = () => {
-        const { currentPlayer } = props;
+        const { currentPlayer, board } = props;
+
+        if (Constants.FIRST_ROW_TILES.map((tile) => board[tile])
+            .every((value, index, arr) => value && value === arr[Constants.INITIAL_TILE_POSITION])) {
+
+            return Constants.STATUS_WINNER
+                + board[Constants.FIRST_ROW_TILES[Constants.INITIAL_TILE_POSITION]];
+        }
+
         return Constants.CURRENT_PLAYER + currentPlayer;
     };
 
@@ -14,6 +22,7 @@ const Status = (props) => {
 }
 
 Status.propTypes = {
-    currentPlayer: PropTypes.string.isRequired
+    currentPlayer: PropTypes.string.isRequired,
+    board: PropTypes.array.isRequired
 };
 export default Status;

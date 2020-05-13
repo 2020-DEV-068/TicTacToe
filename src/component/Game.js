@@ -40,7 +40,8 @@ const Game = () => {
             </header>
             <div>
                 <div className={StyleConstants.STATUS}>
-                    <Status currentPlayer={currentPlayer} />
+                    <Status currentPlayer={currentPlayer}
+                        board={board} />
                 </div>
                 <ul className={StyleConstants.BOARD}>
                     {renderBoard()}

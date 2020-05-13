@@ -15,6 +15,11 @@ const Constants = {
     EXPECT_PLAYER_X: "X",
     EXPECT_PLAYER_O: "O",
     EXPECT_CURRENT_PLAYER_X: "Current Player : X",
-    EXPECT_CURRENT_PLAYER_O: "Current Player : O"
+    EXPECT_CURRENT_PLAYER_O: "Current Player : O",
+    EXPECT_WINNER_X: "Winner is : X",
+    EXPECT_WINNER_O: "Winner is : O",
+
+    INPUT_EMPTY_BOARD: ["", "", "", "", "", "", "", "", ""],
+    INPUT_PLAYER_X_WINNING_BOARD: ["X", "X", "X", "O", "O"]
 };
 export default Constants;
