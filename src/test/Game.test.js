@@ -3,6 +3,7 @@ import Game from '../component/Game';
 import Constants from './constants/Constants';
 import Tile from '../component/Tile';
 import Status from '../component/Status';
+import Tiles from './constants/Tiles';
 import { shallow, mount } from 'enzyme';
 
 describe(("<Game/> component"), () => {
@@ -29,10 +30,22 @@ describe(("<Game/> component"), () => {
 });
 
 describe(("<Game/> component functionality"), () => {
-    let wrapper;
+    let wrapper, PLAYER_X, PLAYER_O;
 
     beforeEach(() => {
         wrapper = mount(<Game />);
+
+        PLAYER_X = {
+            playOn: function (tile) {
+                wrapper.find(Tile).at(tile).find("button").simulate('click');
+            }
+        }
+
+        PLAYER_O = {
+            playOn: function (tile) {
+                wrapper.find(Tile).at(tile).find("button").simulate('click');
+            }
+        }
     });
 
     it("Should render 9 empty Tiles", () => {
@@ -43,24 +56,28 @@ describe(("<Game/> component functionality"), () => {
     });
 
     it("Should always assign first move to Player X", () => {
-        wrapper.find(Tile).at(0).find("button").simulate('click');
+        PLAYER_X.playOn(Tiles.TOP_LEFT);
+
         expect(wrapper.find(Tile).at(0).find("button").text()).toBe(Constants.EXPECT_PLAYER_X);
     });
 
     it("Should assign the alternate move to Player O", () => {
-        wrapper.find(Tile).at(0).find("button").simulate('click');
-        wrapper.find(Tile).at(1).find("button").simulate('click');
+        PLAYER_X.playOn(Tiles.TOP_LEFT);
+        PLAYER_O.playOn(Tiles.TOP_MIDDLE);
+
         expect(wrapper.find(Tile).at(1).find("button").text()).toBe(Constants.EXPECT_PLAYER_O);
     });
 
     it("Should display the status of game with current player turn", () => {
         expect(wrapper.find(Status).find("label").text()).toBe(Constants.EXPECT_CURRENT_PLAYER_X);
 
-        wrapper.find(Tile).at(0).find("button").simulate('click');
+        PLAYER_X.playOn(Tiles.TOP_LEFT);
+
         expect(wrapper.find(Tile).at(0).find("button").text()).toBe(Constants.EXPECT_PLAYER_X);
         expect(wrapper.find(Status).find("label").text()).toBe(Constants.EXPECT_CURRENT_PLAYER_O);
 
-        wrapper.find(Tile).at(1).find("button").simulate('click');
+        PLAYER_O.playOn(Tiles.TOP_MIDDLE);
+
         expect(wrapper.find(Tile).at(1).find("button").text()).toBe(Constants.EXPECT_PLAYER_O);
         expect(wrapper.find(Status).find("label").text()).toBe(Constants.EXPECT_CURRENT_PLAYER_X);
     });
