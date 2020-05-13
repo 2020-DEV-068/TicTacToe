@@ -3,6 +3,8 @@ const Constants = {
     DATA_SYMBOL_COLOR: "data-symbol-color",
     PLAYER_O: "O",
     DISABLED: "disabled",
+    RESTART: "restart",
+    RESTART_BUTTON: "restart-button",
 
     EXPECT_TIC_TAC_TOE: "Tic-Tac-Toe",
     EXPECT_APP: "App",
@@ -19,6 +21,7 @@ const Constants = {
     EXPECT_WINNER_X: "Winner is : X",
     EXPECT_WINNER_O: "Winner is : O",
     EXPECT_GAME_DRAW: "Game is draw!",
+    EXPECT_RESTART: "Restart",
 
     INPUT_EMPTY_BOARD: ["", "", "", "", "", "", "", "", ""],
     INPUT_PLAYER_X_WINNING_BOARD: ["X", "X", "X", "O", "O"],

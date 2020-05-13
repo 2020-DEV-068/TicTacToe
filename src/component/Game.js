@@ -39,6 +39,12 @@ const Game = () => {
         setGameHasWinner(true);
     };
 
+    const restart = () => {
+        setBoard(Array(Constants.MAXIMUM_NUMBER_OF_TILES).fill(Constants.EMPTY_VALUE));
+        setCurrentPlayer(Constants.PLAYER_X);
+        setGameHasWinner(false);
+    };
+
     return (
         <div className={StyleConstants.APP}>
             <header className={StyleConstants.APP_HEADER}>
@@ -53,6 +59,10 @@ const Game = () => {
                 <ul className={StyleConstants.BOARD}>
                     {renderBoard()}
                 </ul>
+                <div className={StyleConstants.RESTART}>
+                    <button className={StyleConstants.RESTART_BUTTON}
+                        type="Submit" onClick={() => restart()}>{StyleConstants.RESTART_GAME}</button>
+                </div>
             </div>
         </div>
     );

@@ -3,6 +3,9 @@ const StyleConstants = {
     APP_HEADER: "App-header",
     BOARD: "board",
     TILE_BUTTON: "tile-button",
-    STATUS: "status"
+    STATUS: "status",
+    RESTART: "restart",
+    RESTART_BUTTON: "restart-button",
+    RESTART_GAME: "Restart"
 };
 export default StyleConstants;

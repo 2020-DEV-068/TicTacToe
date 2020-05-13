@@ -26,6 +26,8 @@ describe(("<Game/> component"), () => {
         expect(wrapper.find("header").hasClass(Constants.EXPECT_APP_HEADER)).toBeTruthy();
         expect(wrapper.find("ul").hasClass(Constants.EXPECT_BOARD)).toBeTruthy();
         expect(wrapper.find("div").at(2).hasClass(Constants.EXPECT_STATUS)).toBeTruthy();
+        expect(wrapper.find("div").at(3).hasClass(Constants.RESTART)).toBeTruthy();
+        expect(wrapper.find("button").hasClass(Constants.RESTART_BUTTON)).toBeTruthy();
     });
 });
 
@@ -323,4 +325,22 @@ describe(("<Game/> component functionality"), () => {
 
         expect(wrapper.find("label").text()).toBe(Constants.EXPECT_GAME_DRAW);
     });
+
+    it("Should restart game to initial state on clicking Restart button", () => {
+        PLAYER_X.playOn(Tiles.TOP_MIDDLE);
+        PLAYER_O.playOn(Tiles.TOP_RIGHT);
+        PLAYER_X.playOn(Tiles.CENTER_LEFT);
+        PLAYER_O.playOn(Tiles.CENTER);
+        PLAYER_X.playOn(Tiles.CENTER_RIGHT);
+        PLAYER_O.playOn(Tiles.BOTTOM_LEFT);
+
+        expect(wrapper.find("button").at(9).text()).toBe(Constants.EXPECT_RESTART);
+        wrapper.find("button").at(9).simulate('click');
+        wrapper.find(Tile).forEach(tile => {
+            expect(tile.find("button").text()).toBe(Constants.EXPECT_EMPTY_VALUE);
+            expect(tile.find("button").props()[Constants.DISABLED]).toBeFalsy();
+        });
+        expect(wrapper.find(Status).find("label").text()).toBe(Constants.EXPECT_CURRENT_PLAYER_X);
+    });
+
 });
