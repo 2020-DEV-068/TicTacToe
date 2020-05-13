@@ -39,4 +39,8 @@ describe(("<Tile/> component functionality"), () => {
         expect(wrapper_o.find("button").props()[Constants.DATA_SYMBOL_COLOR]).toBe(Constants.EXPECT_PLAYER_O);
         expect(wrapper_o.find("button").text()).toEqual(Constants.EXPECT_PLAYER_O);
     });
+
+    it("should not allow player to play on played tile", () => {
+        expect(wrapper_x.find("button").props()[Constants.DISABLED]).toBeTruthy();
+    });
 });

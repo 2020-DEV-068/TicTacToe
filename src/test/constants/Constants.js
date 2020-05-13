@@ -2,6 +2,7 @@ const Constants = {
     PLAYER_X: "X",
     DATA_SYMBOL_COLOR: "data-symbol-color",
     PLAYER_O: "O",
+    DISABLED: "disabled",
 
     EXPECT_TIC_TAC_TOE: "Tic-Tac-Toe",
     EXPECT_APP: "App",
