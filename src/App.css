@@ -14,3 +14,28 @@
   color: white;
   margin-bottom: 20px;
 }
+
+.board {
+  width: 12rem;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #000000;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.board li {
+  list-style-type: none;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+.tile-button {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  cursor: pointer;
+}
