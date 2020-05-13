@@ -10,13 +10,18 @@ const Status = (props) => {
     useEffect(() => { updateStatus(); });
 
     const updateStatus = () => {
-        if (isFirstRowCompletedByAPlayer() || isSecondRowCompletedByAPlayer()
-            || isThirdRowCompletedByAPlayer()) {
+        if (isRowCompletedByAPlayer()) {
             setGameStatus(Constants.STATUS_WINNER + winner);
             onPlayerWin();
             return;
         }
         setGameStatus(Constants.CURRENT_PLAYER + currentPlayer);
+    };
+
+    const isRowCompletedByAPlayer = () => {
+        return isFirstRowCompletedByAPlayer()
+            || isSecondRowCompletedByAPlayer()
+            || isThirdRowCompletedByAPlayer();
     };
 
     const isFirstRowCompletedByAPlayer = () => {
