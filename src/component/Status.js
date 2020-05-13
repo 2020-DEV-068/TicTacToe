@@ -10,7 +10,8 @@ const Status = (props) => {
     useEffect(() => { updateStatus(); });
 
     const updateStatus = () => {
-        if (isFirstRowCompletedByAPlayer() || isSecondRowCompletedByAPlayer()) {
+        if (isFirstRowCompletedByAPlayer() || isSecondRowCompletedByAPlayer()
+            || isThirdRowCompletedByAPlayer()) {
             setGameStatus(Constants.STATUS_WINNER + winner);
             onPlayerWin();
             return;
@@ -24,6 +25,10 @@ const Status = (props) => {
 
     const isSecondRowCompletedByAPlayer = () => {
         return isTilesTakenBySamePlayer(Constants.SECOND_ROW_TILES);
+    };
+
+    const isThirdRowCompletedByAPlayer = () => {
+        return isTilesTakenBySamePlayer(Constants.THIRD_ROW_TILES);
     };
 
     const isTilesTakenBySamePlayer = (tiles) => {
