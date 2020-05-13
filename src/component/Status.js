@@ -15,7 +15,7 @@ const Status = (props) => {
             onPlayerWin();
             return;
         }
-        if (board.indexOf(Constants.EMPTY_VALUE) === Constants.INDEX_NOT_FOUND) {
+        if (isDraw()) {
             setGameStatus(Constants.STATUS_GAME_DRAW);
             return;
         }
@@ -88,6 +88,10 @@ const Status = (props) => {
     const hasWinner = (tiles) => {
         return tiles.map((tile) => board[tile])
             .every((value, index, arr) => value && value === arr[Constants.INITIAL_TILE_POSITION]);
+    };
+
+    const isDraw = () => {
+        return board.indexOf(Constants.EMPTY_VALUE) === Constants.INDEX_NOT_FOUND;
     };
 
     return (
