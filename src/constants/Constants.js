@@ -12,6 +12,7 @@ const Constants = {
     THIRD_ROW_TILES: [6, 7, 8],
     FIRST_COLUMN_TILES: [0, 3, 6],
     SECOND_COLUMN_TILES: [1, 4, 7],
-    THIRD_COLUMN_TILES: [2, 5, 8]
+    THIRD_COLUMN_TILES: [2, 5, 8],
+    LEFT_DIAGONAL_TILES: [0, 4, 8]
 };
 export default Constants;

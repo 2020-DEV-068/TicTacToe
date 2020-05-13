@@ -256,4 +256,31 @@ describe(("<Game/> component functionality"), () => {
         });
         expect(wrapper.find("label").text()).toBe(Constants.EXPECT_WINNER_O);
     });
+
+    it("should declare X as winner if left diagonal is completely filled by X ", () => {
+        PLAYER_X.playOn(Tiles.TOP_LEFT);
+        PLAYER_O.playOn(Tiles.TOP_MIDDLE);
+        PLAYER_X.playOn(Tiles.CENTER);
+        PLAYER_O.playOn(Tiles.CENTER_RIGHT);
+        PLAYER_X.playOn(Tiles.BOTTOM_RIGHT);
+
+        wrapper.find(Tile).forEach(tile => {
+            expect(tile.find("button").props()[Constants.DISABLED]).toBeTruthy();
+        });
+        expect(wrapper.find("label").text()).toBe(Constants.EXPECT_WINNER_X);
+    });
+
+    it("should declare O as winner if left diagonal is completely filled by O ", () => {
+        PLAYER_X.playOn(Tiles.TOP_MIDDLE);
+        PLAYER_O.playOn(Tiles.TOP_LEFT);
+        PLAYER_X.playOn(Tiles.CENTER_LEFT);
+        PLAYER_O.playOn(Tiles.CENTER);
+        PLAYER_X.playOn(Tiles.CENTER_RIGHT);
+        PLAYER_O.playOn(Tiles.BOTTOM_RIGHT);
+
+        wrapper.find(Tile).forEach(tile => {
+            expect(tile.find("button").props()[Constants.DISABLED]).toBeTruthy();
+        });
+        expect(wrapper.find("label").text()).toBe(Constants.EXPECT_WINNER_O);
+    });
 });
