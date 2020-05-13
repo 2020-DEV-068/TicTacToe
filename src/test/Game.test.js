@@ -44,4 +44,10 @@ describe(("<Game/> component functionality"), () => {
         wrapper.find(Tile).at(0).find("button").simulate('click');
         expect(wrapper.find(Tile).at(0).find("button").text()).toBe(Constants.EXPECT_PLAYER_X);
     });
+
+    it("Should assign the alternate move to Player O", () => {
+        wrapper.find(Tile).at(0).find("button").simulate('click');
+        wrapper.find(Tile).at(1).find("button").simulate('click');
+        expect(wrapper.find(Tile).at(1).find("button").text()).toBe(Constants.EXPECT_PLAYER_O);
+    });
 });

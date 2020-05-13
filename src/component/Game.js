@@ -6,6 +6,7 @@ import Constants from '../constants/Constants';
 
 const Game = () => {
     const [board, setBoard] = useState(Array(Constants.MAXIMUM_NUMBER_OF_TILES).fill(Constants.EMPTY_VALUE));
+    const [currentPlayer, setCurrentPlayer] = useState(Constants.PLAYER_X);
 
     const renderBoard = () => {
         let tiles = [];
@@ -22,8 +23,9 @@ const Game = () => {
 
     const handleCurrentPlayerTurn = (tile) => {
         const gameBoard = board.slice();
-        gameBoard[tile] = Constants.PLAYER_X;
+        gameBoard[tile] = currentPlayer;
         setBoard(gameBoard);
+        setCurrentPlayer(currentPlayer === Constants.PLAYER_X ? Constants.PLAYER_O : Constants.PLAYER_X);
     };
 
     return (

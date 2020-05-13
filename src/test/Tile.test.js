@@ -21,15 +21,22 @@ describe(("<Tile/> component"), () => {
 });
 
 describe(("<Tile/> component functionality"), () => {
-    let wrapper;
+    let wrapper_x, wrapper_o;
 
     beforeEach(() => {
-        wrapper = shallow(<Tile value={Constants.PLAYER_X}
+        wrapper_x = shallow(<Tile value={Constants.PLAYER_X}
+            onClick={jest.fn()} />);
+        wrapper_o = shallow(<Tile value={Constants.PLAYER_O}
             onClick={jest.fn()} />);
     });
 
     it("should display symbol X when player X clicks on tile", () => {
-        expect(wrapper.find("button").props()[Constants.DATA_SYMBOL_COLOR]).toBe(Constants.EXPECT_PLAYER_X);
-        expect(wrapper.find("button").text()).toEqual(Constants.EXPECT_PLAYER_X);
+        expect(wrapper_x.find("button").props()[Constants.DATA_SYMBOL_COLOR]).toBe(Constants.EXPECT_PLAYER_X);
+        expect(wrapper_x.find("button").text()).toEqual(Constants.EXPECT_PLAYER_X);
+    });
+
+    it("should display symbol O when player O clicks on tile", () => {
+        expect(wrapper_o.find("button").props()[Constants.DATA_SYMBOL_COLOR]).toBe(Constants.EXPECT_PLAYER_O);
+        expect(wrapper_o.find("button").text()).toEqual(Constants.EXPECT_PLAYER_O);
     });
 });

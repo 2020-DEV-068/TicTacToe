@@ -43,3 +43,7 @@
 button.tile-button[data-symbol-color="X"] {
   color: red;
 }
+
+button.tile-button[data-symbol-color="O"] {
+  color: green;
+}
