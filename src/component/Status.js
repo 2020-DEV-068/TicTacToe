@@ -10,7 +10,7 @@ const Status = (props) => {
     useEffect(() => { updateStatus(); });
 
     const updateStatus = () => {
-        if (isFirstRowCompletedByAPlayer()) {
+        if (isFirstRowCompletedByAPlayer() || isSecondRowCompletedByAPlayer()) {
             setGameStatus(Constants.STATUS_WINNER + winner);
             onPlayerWin();
             return;
@@ -19,15 +19,23 @@ const Status = (props) => {
     };
 
     const isFirstRowCompletedByAPlayer = () => {
-        if (isTilesTakenBySamePlayer()) {
+        if (isTilesTakenBySamePlayer(Constants.FIRST_ROW_TILES)) {
             setWinner(board[Constants.FIRST_ROW_TILES[Constants.INITIAL_TILE_POSITION]]);
             return true;
         }
         return false;
     };
 
-    const isTilesTakenBySamePlayer = () => {
-        return Constants.FIRST_ROW_TILES.map((tile) => board[tile])
+    const isSecondRowCompletedByAPlayer = () => {
+        if (isTilesTakenBySamePlayer(Constants.SECOND_ROW_TILES)) {
+            setWinner(board[Constants.SECOND_ROW_TILES[Constants.INITIAL_TILE_POSITION]]);
+            return true;
+        }
+        return false;
+    };
+
+    const isTilesTakenBySamePlayer = (tiles) => {
+        return tiles.map((tile) => board[tile])
             .every((value, index, arr) => value && value === arr[Constants.INITIAL_TILE_POSITION]);
     };
 
