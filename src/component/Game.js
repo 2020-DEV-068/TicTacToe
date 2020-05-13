@@ -8,6 +8,7 @@ import Constants from '../constants/Constants';
 const Game = () => {
     const [board, setBoard] = useState(Array(Constants.MAXIMUM_NUMBER_OF_TILES).fill(Constants.EMPTY_VALUE));
     const [currentPlayer, setCurrentPlayer] = useState(Constants.PLAYER_X);
+    const [gameHasWinner, setGameHasWinner] = useState(false);
 
     const renderBoard = () => {
         let tiles = [];
@@ -16,6 +17,7 @@ const Game = () => {
                 <Tile key={tile}
                     onClick={() => handleCurrentPlayerTurn(tile)}
                     value={board[tile]}
+                    gameHasWinner={gameHasWinner}
                 />
             );
         }
@@ -33,6 +35,10 @@ const Game = () => {
         setCurrentPlayer(currentPlayer === Constants.PLAYER_X ? Constants.PLAYER_O : Constants.PLAYER_X);
     };
 
+    const handlePlayerWon = () => {
+        setGameHasWinner(true);
+    };
+
     return (
         <div className={StyleConstants.APP}>
             <header className={StyleConstants.APP_HEADER}>
@@ -41,7 +47,8 @@ const Game = () => {
             <div>
                 <div className={StyleConstants.STATUS}>
                     <Status currentPlayer={currentPlayer}
-                        board={board} />
+                        board={board}
+                        onPlayerWin={() => handlePlayerWon()} />
                 </div>
                 <ul className={StyleConstants.BOARD}>
                     {renderBoard()}

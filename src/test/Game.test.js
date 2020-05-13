@@ -109,4 +109,16 @@ describe(("<Game/> component functionality"), () => {
 
         expect(wrapper.find(Status).find("label").text()).toBe(Constants.EXPECT_WINNER_O);
     });
+
+    it("Should disable tiles on winning game", () => {
+        PLAYER_X.playOn(Tiles.TOP_LEFT);
+        PLAYER_O.playOn(Tiles.CENTER_LEFT);
+        PLAYER_X.playOn(Tiles.TOP_MIDDLE);
+        PLAYER_O.playOn(Tiles.CENTER);
+        PLAYER_X.playOn(Tiles.TOP_RIGHT);
+
+        wrapper.find(Tile).forEach(tile => {
+            expect(tile.find("button").props()[Constants.DISABLED]).toBeTruthy();
+        });
+    });
 });

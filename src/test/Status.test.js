@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Status from '../component/Status';
 import Constants from './constants/Constants';
 
@@ -7,8 +7,9 @@ describe(("<Status/> component"), () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Status currentPlayer={Constants.PLAYER_X}
-            board={Constants.INPUT_EMPTY_BOARD} />);
+        wrapper = mount(<Status currentPlayer={Constants.PLAYER_X}
+            board={Constants.INPUT_EMPTY_BOARD}
+            onPlayerWin={jest.fn()} />);
     });
 
     it("should render correctly", () => {
@@ -24,7 +25,19 @@ describe(("<Status/> component"), () => {
 describe(("<Status/> functionality"), () => {
     it("should render status on game won by player", () => {
         const wrapper = mount(<Status currentPlayer={Constants.PLAYER_O}
-            board={Constants.INPUT_PLAYER_X_WINNING_BOARD} />);
+            board={Constants.INPUT_PLAYER_X_WINNING_BOARD}
+            onPlayerWin={jest.fn()} />);
+        expect(wrapper.find("label").text()).toBe(Constants.EXPECT_WINNER_X);
+    });
+
+    it("Should not allow player to play once player has won", () => {
+        const onPlayerWonMockFn = jest.fn();
+        expect(onPlayerWonMockFn).toHaveBeenCalledTimes(0);
+
+        const wrapper = mount(<Status currentPlayer={Constants.PLAYER_O}
+            board={Constants.INPUT_PLAYER_X_WINNING_BOARD}
+            onPlayerWin={onPlayerWonMockFn} />);
+        expect(onPlayerWonMockFn).toHaveBeenCalled();
         expect(wrapper.find("label").text()).toBe(Constants.EXPECT_WINNER_X);
     });
 });

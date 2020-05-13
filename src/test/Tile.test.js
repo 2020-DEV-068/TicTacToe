@@ -8,7 +8,8 @@ describe(("<Tile/> component"), () => {
 
     beforeEach(() => {
         wrapper = shallow(<Tile value={Constants.PLAYER_X}
-            onClick={jest.fn()} />);
+            onClick={jest.fn()}
+            gameHasWinner={false} />);
     });
 
     it("should render correctly", () => {
@@ -25,9 +26,11 @@ describe(("<Tile/> component functionality"), () => {
 
     beforeEach(() => {
         wrapper_x = shallow(<Tile value={Constants.PLAYER_X}
-            onClick={jest.fn()} />);
+            onClick={jest.fn()}
+            gameHasWinner={false} />);
         wrapper_o = shallow(<Tile value={Constants.PLAYER_O}
-            onClick={jest.fn()} />);
+            onClick={jest.fn()}
+            gameHasWinner={false} />);
     });
 
     it("should display symbol X when player X clicks on tile", () => {
@@ -41,6 +44,11 @@ describe(("<Tile/> component functionality"), () => {
     });
 
     it("should not allow player to play on played tile", () => {
+        expect(wrapper_x.find("button").props()[Constants.DISABLED]).toBeTruthy();
+    });
+
+    it("Should disable tile once player won the game", () => {
+        wrapper_x = shallow(<Tile value={Constants.PLAYER_X} onClick={jest.fn()} gameHasWinner={true} />);
         expect(wrapper_x.find("button").props()[Constants.DISABLED]).toBeTruthy();
     });
 });

@@ -9,7 +9,7 @@ const Tile = (props) => {
             <button className={StyleConstants.TILE_BUTTON}
                 onClick={props.onClick}
                 data-symbol-color={props.value}
-                disabled={props.value}>
+                disabled={props.gameHasWinner || props.value}>
                 {props.value}
             </button>
         </li>
@@ -18,6 +18,7 @@ const Tile = (props) => {
 
 Tile.propTypes = {
     onClick: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
+    gameHasWinner: PropTypes.bool.isRequired
 };
 export default Tile;
