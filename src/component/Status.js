@@ -15,6 +15,10 @@ const Status = (props) => {
             onPlayerWin();
             return;
         }
+        if (board.indexOf(Constants.EMPTY_VALUE) === Constants.INDEX_NOT_FOUND) {
+            setGameStatus(Constants.STATUS_GAME_DRAW);
+            return;
+        }
         setGameStatus(Constants.CURRENT_PLAYER + currentPlayer);
     };
 

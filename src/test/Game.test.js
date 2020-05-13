@@ -309,4 +309,18 @@ describe(("<Game/> component functionality"), () => {
         });
         expect(wrapper.find("label").text()).toBe(Constants.EXPECT_WINNER_O);
     });
+
+    it("should be draw when all tiles are completely filled and no winner", () => {
+        PLAYER_X.playOn(Tiles.TOP_LEFT);
+        PLAYER_O.playOn(Tiles.TOP_MIDDLE);
+        PLAYER_X.playOn(Tiles.TOP_RIGHT);
+        PLAYER_O.playOn(Tiles.CENTER_LEFT);
+        PLAYER_X.playOn(Tiles.CENTER);
+        PLAYER_O.playOn(Tiles.BOTTOM_RIGHT);
+        PLAYER_X.playOn(Tiles.CENTER_RIGHT);
+        PLAYER_O.playOn(Tiles.BOTTOM_LEFT);
+        PLAYER_X.playOn(Tiles.BOTTOM_MIDDLE);
+
+        expect(wrapper.find("label").text()).toBe(Constants.EXPECT_GAME_DRAW);
+    });
 });
